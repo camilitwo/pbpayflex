@@ -1,0 +1,11 @@
+[project]
+name = "pbpayflex"
+
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "./start.sh"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+healthcheckPath = "/api/health"
