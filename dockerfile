@@ -22,5 +22,5 @@ EXPOSE 8090
 HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=5 \
   CMD wget -qO- http://127.0.0.1:${PORT:-8090}/api/health || exit 1
 
-# ¡Clave!: usar $PORT que Sliplane define; fallback a 8090 si no está
+# ¡Clave!: usar $PORT que Sliplane/Railway define; fallback a 8090 si no está
 CMD ["sh", "-lc", "./pocketbase serve --http 0.0.0.0:${PORT:-8090} --dir /pb_data --publicDir /pb_public --migrationsDir /pb_migrations"]
