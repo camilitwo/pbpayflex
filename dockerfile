@@ -15,6 +15,7 @@ RUN curl -L -o pb.zip \
   "https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_${PB_ARCH}.zip" \
  && unzip pb.zip && rm pb.zip && chmod +x pocketbase
 
+
 USER pocketbase
 EXPOSE 8090
 
