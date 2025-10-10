@@ -11,15 +11,15 @@ RUN apk add --no-cache curl unzip ca-certificates tzdata wget \
 
 WORKDIR /app
 
+# Descargar y preparar PocketBase
 RUN curl -L -o pb.zip \
   "https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_${PB_ARCH}.zip" \
- && unzip pb.zip && rm pb.zip && chmod +x pocketbase
+ && unzip -o pb.zip && rm -f pb.zip && chmod +x pocketbase \
+ && chown pocketbase:pocketbase pocketbase
 
-<<<<<<< HEAD
-=======
+# Copy the start script from the repo and make sure it's executable and owned by pocketbase
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh && chown pocketbase:pocketbase /app/start.sh
->>>>>>> 0abcb026131fcf141f3667dedc6463b539a8ae3a
 
 USER pocketbase
 EXPOSE 8090
